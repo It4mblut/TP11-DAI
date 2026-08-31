@@ -1,68 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mini Pokédex</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="estilo.css">
-</head>
-<body>
-  <div class="bg-grid"></div>
-  <div class="bg-orb orb-1"></div>
-  <div class="bg-orb orb-2"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokédex - TP09 EFSI</title>
+  </head>
 
-  <div class="app-wrapper">
+  <body>
+    <div id="root"></div>
 
-    <header class="header">
-      <div class="pokeball-icon" aria-hidden="true">
-        <div class="pb-top"></div>
-        <div class="pb-middle"><div class="pb-center"></div></div>
-        <div class="pb-bottom"></div>
-      </div>
-      <h1 class="header-title">Pokédex</h1>
-    </header>
-
-    <section class="search-section">
-      <div class="search-box">
-        <input
-          type="text"
-          id="pokemonInput"
-          class="search-input"
-          placeholder="Ej: pikachu, charizard, 25..."
-          autocomplete="off"
-          spellcheck="false"
-        >
-        <button type="button" class="search-btn" onclick="obtenerPokemon()">
-          <span class="btn-text">Buscar</span>
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-          </svg>
-        </button>
-      </div>
-    </section>
-
-    <div id="loading" class="state-loading" style="display:none">
-      <div class="loading-ball">
-        <div class="lb-top"></div>
-        <div class="lb-middle"><div class="lb-center"></div></div>
-        <div class="lb-bottom"></div>
-      </div>
-      <p class="loading-text">Buscando en la Pokédex...</p>
-    </div>
-
-    <div id="error" class="state-error" style="display:none">
-      <div class="error-icon">✕</div>
-      <p id="errorMessage" class="error-message"></p>
-      <p class="error-hint">Revisá el nombre e intentá de nuevo.</p>
-    </div>
-
-    <div id="resultado" class="card" style="display:none"></div>
-
-  </div>
-
-  <script src="app.js"></script>
-</body>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
