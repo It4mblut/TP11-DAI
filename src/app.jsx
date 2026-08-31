@@ -4,10 +4,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Favorites from './pages/Favorites';
+import Login from './pages/Login';
 import { obtenerPokemones } from './services/api';
 
 export default function App() {
-  const [vistaActual, setVistaActual] = useState('home');
+  const [vistaActual, setVistaActual] = useState('login');
   const [pokemones, setPokemones] = useState([]);
   const [busqueda, setBusqueda] = useState('');
   const [loading, setLoading] = useState(true);
@@ -26,11 +27,9 @@ export default function App() {
         setLoading(false);
       }
     };
-
     cargarDatosIniciales();
     cargarFavoritosStorage();
   }, []);
-
   const cargarFavoritosStorage = async () => {
     try {
       const guardados = await AsyncStorage.getItem('favoritos');
@@ -41,7 +40,6 @@ export default function App() {
       console.error('Error al cargar favoritos de AsyncStorage', e);
     }
   };
-
   const guardarFavoritosStorage = async (nuevosFavoritos) => {
     try {
       await AsyncStorage.setItem('favoritos', JSON.stringify(nuevosFavoritos));
@@ -49,7 +47,6 @@ export default function App() {
       console.error('Error al guardar favoritos en AsyncStorage', e);
     }
   };
-
   const agregarFavorito = (pokemon) => {
     if (!favoritos.some((fav) => fav.id === pokemon.id)) {
       const nuevos = [...favoritos, pokemon];
@@ -57,7 +54,6 @@ export default function App() {
       guardarFavoritosStorage(nuevos);
     }
   };
-
   const quitarFavorito = (id) => {
     const nuevos = favoritos.filter((fav) => fav.id !== id);
     setFavoritos(nuevos);
@@ -73,7 +69,7 @@ export default function App() {
         cantidadFavoritos={favoritos.length}
       />
       <View style={styles.appWrapper}>
-        {vistaActual === 'home' ? (
+        {vistaActual === 'home' && (
           <Home
             pokemones={pokemones}
             busqueda={busqueda}
@@ -84,18 +80,21 @@ export default function App() {
             agregarFavorito={agregarFavorito}
             quitarFavorito={quitarFavorito}
           />
-        ) : (
+        )}
+        {vistaActual === 'favorites' && (
           <Favorites
             favoritos={favoritos}
             agregarFavorito={agregarFavorito}
             quitarFavorito={quitarFavorito}
           />
         )}
+        {vistaActual === 'login' && (
+        <Login onLoginSuccess={() => setVistaActual('home')} />
+        )}
       </View>
     </SafeAreaView>
   );
 }
-
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
