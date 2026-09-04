@@ -1,3 +1,8 @@
+Antes que nada, ejecutar los siguientes comandos
+npm install
+y
+npx expo install --fix
+-
 En cuanto se ejecutan ambos comandos en 2 terminales diferentes
 (node server.js, que devuelve "Servidor corriendo en http://localhost:3000" y npm run dev que devuelve el link para ejecutar en web)
 Se muestra un inicio de sesion, validado por JWT.
