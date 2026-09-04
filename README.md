@@ -1,6 +1,7 @@
 Antes que nada, ejecutar los siguientes comandos
 npm install
-y
+npm install expo
+y luego
 npx expo install --fix
 
 En cuanto se ejecutan ambos comandos en 2 terminales diferentes
